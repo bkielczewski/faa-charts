@@ -2,7 +2,7 @@ services:
   demo:
   kml:
   tms:
-    # needs no arguments
+    origin: 'nw'
   wms:
     srs: ['EPSG:4326', 'EPSG:3857', 'EPSG:900913']
     image_formats: ['image/jpeg', 'image/png', 'image/png24']
@@ -20,7 +20,7 @@ layers:
     title: OSM
     sources: [osm_cache]
   - name: sec
-    title: 
+    title: SEC
     sources: [sec_cache]
   - name: secdebug
     title: Charts
@@ -32,10 +32,10 @@ layers:
     title: Charts
     sources: [secgrids_cache]
   - name: sec_4326
-    title:  4326
+    title: '4326'
     sources: [sec_4326_cache]
   - name: wac
-    title: 
+    title: 'WAC'
     sources: [sec_cache]
   - name: wac_3857
     title: Charts
@@ -44,19 +44,19 @@ layers:
     title: Charts
     sources: [secgrids_cache]
   - name: wac_4326
-    title:  4326
+    title: '4326'
     sources: [sec_4326_cache]
   - name: tac
-    title: 
+    title: 'TAC'
     sources: [tac_cache]
   - name: tac_3857
     title: Charts
     sources: [tac_3857_cache]
   - name: tacgrids
-    title: 
+    title: 'TAC Grids'
     sources: [tacgrids_cache]
   - name: tac_4326
-    title:  4326
+    title:  '4326'
     sources: [tac_4326_cache]
   - name: hel
     title: Charts
@@ -68,40 +68,40 @@ layers:
     title: Charts
     sources: [helgrids_cache]
   - name: hel_4326
-    title:  4326
+    title: '4326'
     sources: [hel_4326_cache]
   - name: enrl
-    title: 
+    title: 'ENRL'
     sources: [enrl_cache]
   - name: enrl_3857
     title: Charts
     sources: [enrl_3857_cache]
   - name: enrl_4326
-    title:  4326
+    title: '4326'
     sources: [enrl_4326_cache]
   - name: enrh
-    title: 
+    title: 'ENRH'
     sources: [enrh_cache]
   - name: enrh_3857
     title: Charts
     sources: [enrh_3857_cache]
   - name: enrh_4326
-    title:  4326
+    title: '4326'
     sources: [enrh_4326_cache]
   - name: enra
-    title: 
+    title: 'ENRA'
     sources: [enra_cache]
   - name: enra_3857
     title: Charts
     sources: [enra_3857_cache]
   - name: enra_4326
-    title:  4326
+    title: '4326'
     sources: [enra_4326_cache]
   - name: grids
-    title: 
+    title: 'Grids'
     sources: [grids_cache]
   - name: grids_4326
-    title:  4326
+    title: '4326'
     sources: [grids_4326_cache]
 
 
@@ -115,7 +115,7 @@ layers:
     title: Charts
     sources: [basemap_cache]
   - name: basemap_4326
-    title:  4326
+    title: '4326'
     sources: [basemap_4326_cache]
 
 
@@ -242,15 +242,17 @@ sources:
     type: wms
     supported_srs: ['EPSG:3857', 'EPSG:4326']
     req:
-      url: http://mapserv.example.com/maps_sec
+      url: http://mapserver
       layers: basemap,sec
+      map: /etc/mapserver/map_sec.map
       concurrent_requests: 4
   secdebug_wms:
     type: wms
     supported_srs: ['EPSG:3857', 'EPSG:4326']
     req:
-      url: http://mapserv.example.com/maps_secdebug
+      url: http://mapserver
       layers: basemap,sec
+      map: /etc/mapserver/map_secdebug.map
       concurrent_requests: 4
   sec_3857_wms:
     type: wms
@@ -258,8 +260,9 @@ sources:
     image:
       transparent: true
     req:
-      url: http://mapserv.example.com/mapserv
+      url: http://mapserver
       layers: sec
+      map: /etc/mapserver/map1.map
       concurrent_requests: 4
 
   sec_4326_wms:
@@ -268,8 +271,9 @@ sources:
     image:
       transparent: true
     req:
-      url: http://mapserv.example.com/maps_4326
+      url: http://mapserver
       layers: sec
+      map: /etc/mapserver/map_4326.map
 
   tac_wms:
     type: wms
@@ -277,8 +281,9 @@ sources:
     image:
       transparent: true
     req:
-      url: http://mapserv.example.com/maps_tac
+      url: http://mapserver
       layers: basemap,tac
+      map: /etc/mapserver/map_tac.map
       concurrent_requests: 4
 
   tac_3857_wms:
@@ -287,8 +292,9 @@ sources:
     image:
        transparent: true
     req:
-      url: http://mapserv.example.com/mapserv
+      url: http://mapserver
       layers: tac
+      map: /etc/mapserver/map1.map
       concurrent_requests: 4
 
   tac_4326_wms:
@@ -297,8 +303,9 @@ sources:
     image:
       transparent: true
     req:
-      url: http://mapserv.example.com/maps_4326
+      url: http://mapserver
       layers: tac
+      map: /etc/mapserver/map_4326.map
 
   hel_wms:
     type: wms
@@ -306,8 +313,9 @@ sources:
     image:
       transparent: true
     req:
-      url: http://mapserv.example.com/maps_hel
+      url: http://mapserver
       layers: basemap,hel
+      map: /etc/mapserver/map_hel.map
       concurrent_requests: 4
 
   hel_3857_wms:
@@ -316,8 +324,9 @@ sources:
     image:
       transparent: true
     req:
-      url: http://mapserv.example.com/mapserv
+      url: http://mapserver
       layers: hel
+      map: /etc/mapserver/map1.map
       concurrent_requests: 4
 
   hel_4326_wms:
@@ -326,8 +335,9 @@ sources:
     image:
       transparent: true
     req:
-      url: http://mapserv.example.com/maps_4326
+      url: http://mapserver
       layers: hel
+      map: /etc/mapserver/map_4326.map
 
 
   enrl_wms:
@@ -336,8 +346,9 @@ sources:
     image:
       transparent: true
     req:
-      url: http://mapserv.example.com/maps_enrl
+      url: http://mapserver
       layers: basemap,enrl
+      map: /etc/mapserver/map_enrl.map
       concurrent_requests: 4
 
   enrl_3857_wms:
@@ -346,8 +357,9 @@ sources:
     image:
       transparent: true
     req:
-      url: http://mapserv.example.com/mapserv
+      url: http://mapserver
       layers: enrl
+      map: /etc/mapserver/map1.map
       concurrent_requests: 4
 
   enrl_4326_wms:
@@ -356,8 +368,9 @@ sources:
     image:
       transparent: true
     req:
-      url: http://mapserv.example.com/maps_4326
+      url: http://mapserver
       layers: enrl
+      map: /etc/mapserver/map_4326.map
 
   enrh_wms:
     type: wms
@@ -365,8 +378,9 @@ sources:
     image:
       transparent: true
     req:
-      url: http://mapserv.example.com/maps_enrh
+      url: http://mapserver
       layers: basemap,enrh
+      map: /etc/mapserver/map_enrh.map
       concurrent_requests: 4
 
   enrh_3857_wms:
@@ -375,8 +389,9 @@ sources:
     image:
       transparent: true
     req:
-      url: http://mapserv.example.com/mapserv
+      url: http://mapserver
       layers: enrh
+      map: /etc/mapserver/map1.map
       concurrent_requests: 4
 
 
@@ -387,8 +402,9 @@ sources:
     image:
       transparent: true
     req:
-      url: http://mapserv.example.com/maps_4326
+      url: http://mapserver
       layers: enrh
+      map: /etc/mapserver/map_4326.map
 
   enra_wms:
     type: wms
@@ -396,8 +412,9 @@ sources:
     image:
       transparent: true
     req:
-      url: http://mapserv.example.com/maps_enra
+      url: http://mapserver
       layers: basemap,enra
+      map: /etc/mapserver/map_enra.map
       concurrent_requests: 4
 
   enra_3857_wms:
@@ -406,8 +423,9 @@ sources:
     image:
       transparent: true
     req:
-      url: http://mapserv.example.com/mapserv
+      url: http://mapserver
       layers: enra
+      map: /etc/mapserver/map1.map
       concurrent_requests: 4
 
 
@@ -418,8 +436,9 @@ sources:
     image:
       transparent: true
     req:
-      url: http://mapserv.example.com/maps_4326
+      url: http://mapserver
       layers: enra
+      map: /etc/mapserver/map_4326.map
 
   basemap_wms:
     type: wms
@@ -427,8 +446,9 @@ sources:
     image:
       transparent: true
     req:
-      url: http://mapserv.example.com/maps_basegrid
+      url: http://mapserver
       layers: basemap
+      map: /etc/mapserver/map_basegrid.map
       concurrent_requests: 4
 
   basemap_4326_wms:
@@ -437,8 +457,9 @@ sources:
     image:
       transparent: true
     req:
-      url: http://mapserv.example.com/maps_basegrid
+      url: http://mapserver
       layers: basemap
+      map: /etc/mapserver/map_basegrid.map
 
 
   grids_wms:
@@ -447,8 +468,9 @@ sources:
     image:
       transparent: true
     req:
-      url: http://mapserv.example.com/maps_basegrid
+      url: http://mapserver
       layers: grids
+      map: /etc/mapserver/map_basegrid.map
       concurrent_requests: 4
 
   grids_4326_wms:
@@ -457,8 +479,9 @@ sources:
     image:
       transparent: true
     req:
-      url: http://mapserv.example.com/maps_basegrid
+      url: http://mapserver
       layers: grids
+      map: /etc/mapserver/map_basegrid.map
 
 
 
@@ -467,8 +490,9 @@ sources:
     type: wms
     supported_srs: ['EPSG:3857', 'EPSG:4326']
     req:
-      url: http://mapserv.example.com/maps_grids
+      url: http://mapserver
       layers: gridst
+      map: /etc/mapserver/map_grids.map
       concurrent_requests: 4
     image:
        mode: RGBA
@@ -495,9 +519,9 @@ grids:
 globals:
   cache:
     # where to store the cached images
-    base_dir: '/home/wms/cache/chart'
+    #base_dir: '/home/wms/cache/chart'
     # where to store lockfiles
-    lock_dir: '/home/wms/cache/chart/locks'
+    #lock_dir: '/home/wms/cache/chart/locks'
   #   # request x*y tiles in one step
   #   meta_size: [4, 4]
   #   # add a buffer on all sides (in pixel) when requesting

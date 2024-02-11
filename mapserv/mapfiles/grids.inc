@@ -43,7 +43,6 @@ LAYER
         STATUS ON
         MAXSCALEDENOM 4000000
         CLASS
-        SYMBOL 0
         TEXT '[CONVENTION]_[CELL]'
         LABEL
         WRAP '_'
