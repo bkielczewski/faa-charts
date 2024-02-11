@@ -1,16 +1,12 @@
-mapserv contains configuration, cropping data and utility scripts for the TMS/WMS backend using Mapserver
-https://mapserver.org/
+It's a fork of https://github.com/chartbundle/charts with a goal to make it running via Docker.
+Initially with minimal changes.
+Currently tested for sectionals only. 
 
-mapproxy contains configuration for the TMS/WMS frontend using Mapproxy for performance
-https://mapproxy.org/
-
-FAA Sources to load into mapserv
-https://www.faa.gov/air_traffic/flight_info/aeronav/digital_products/vfr/
-
-https://www.faa.gov/air_traffic/flight_info/aeronav/digital_products/ifr/
-
-
-Almost everything has hardcoded paths.
-
-Apache config files provided for each service in their respective directory.
-
+1. Get Docker
+2. Download charts from [FAA](https://www.faa.gov/air_traffic/flight_info/aeronav/digital_products/vfr/), pick Geo-Tiff.
+3. Put into ./mapserv/charts
+4. Run `docker-compose run makemap /home/mapserv/charts/vfr.sh YYYYMMDD`
+5. Run `docker-compose run makemap /home/mapserv/charts/ifr.sh YYYYMMDD` 
+6. Run `docker-compose run makemap /home/mapserv/bin/makemap3.pl`, it will take a long while
+7. Run `docker-compose up -d`
+8. Mapproxy will be available at [http://localhost:8080](http://localhost:8080)
