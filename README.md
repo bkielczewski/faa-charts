@@ -9,4 +9,4 @@ Currently tested for sectionals only.
 5. Run `docker-compose run makemap /home/mapserv/charts/ifr.sh YYYYMMDD` 
 6. Run `docker-compose run makemap /home/mapserv/bin/makemap3.pl`, it will take a long while
 7. Run `docker-compose up -d`
-8. Mapproxy will be available at [http://localhost:8080](http://localhost:8080)
+8. Mapproxy will be available at [http://localhost:8081](http://localhost:8081)
