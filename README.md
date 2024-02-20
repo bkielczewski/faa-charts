@@ -1,6 +1,5 @@
 It's a fork of https://github.com/chartbundle/charts with a goal to make it running via Docker.
-Initially with minimal changes.
-Currently tested for sectionals only. 
+Initially with minimal changes. Currently tested for sectionals only. 
 
 1. Get Docker
 2. Download charts from [FAA](https://www.faa.gov/air_traffic/flight_info/aeronav/digital_products/vfr/), pick Geo-Tiff.

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dgml xmlns="http://edu.kde.org/marble/dgml/2.0">
+    <document>
+        <head>
+            <name>Local US VFR Sectional Charts</name>
+            <target>earth</target>
+            <theme>us-vfr-sectionals</theme>
+      			<license short="© Federal Aviation Administration (FAA)">Map data: © Federal Aviation Administration (FAA)</license>
+            <visible>true</visible>
+            <description>
+      			</description>
+            <icon pixmap="us-vfr-sectionals-icon.png"/>
+            <zoom>
+                <discrete>false</discrete>
+                <minimum>900</minimum>
+                <maximum>3500</maximum>
+            </zoom>
+        </head>
+        <map bgcolor="#000000" labelColor="#000000">
+            <canvas/>
+            <target/>
+            <layer name="us-vfr-sectionals" backend="texture">
+                <texture name="us-vfr-sectionals-data" expire="15552000" >
+                    <sourcedir format="PNG">earth/us-vfr-sectionals</sourcedir>
+                    <tileSize width="256" height="256" />
+                    <storageLayout levelZeroColumns="1" levelZeroRows="1" maximumTileLevel="18" mode="Custom" />
+                    <projection name="Mercator" />
+					          <downloadUrl protocol="http" host="localhost" port="8081" path="/tiles/sec/{zoomLevel}/{x}/{y}.png" />
+                    <downloadPolicy usage="Browse" maximumConnections="20" />
+                    <downloadPolicy usage="Bulk" maximumConnections="4" />
+                </texture>
+            </layer>
+            <layer name="standardplaces" backend="geodata">
+                <geodata name="cityplacemarks">
+                    <sourcefile format="KML">cityplacemarks.kml</sourcefile>
+                </geodata>
+                <geodata name="baseplacemarks">
+                    <sourcefile format="KML">baseplacemarks.kml</sourcefile>
+                </geodata>
+                <geodata name="elevplacemarks">
+                    <sourcefile format="KML">elevplacemarks.kml</sourcefile>
+                </geodata>
+                <geodata name="observatoryplacemarks">
+                    <sourcefile format="KML">observatoryplacemarks.kml</sourcefile>
+                </geodata>
+                <geodata name="otherplacemarks">
+                    <sourcefile format="KML">otherplacemarks.kml</sourcefile>
+                </geodata>
+                <geodata name="boundaryplacemarks">
+                    <sourcefile format="KML">boundaryplacemarks.kml</sourcefile>
+                </geodata>
+            </layer>
+        </map>
+        <settings>
+            <property name="coordinate-grid">
+                <value>true</value>
+                <available>true</available>
+            </property>
+            <property name="overviewmap">
+                <value>true</value>
+                <available>true</available>
+            </property>
+            <property name="compass">
+                <value>true</value>
+                <available>true</available>
+            </property>
+            <property name="scalebar">
+                <value>true</value>
+                <available>true</available>
+            </property>
+            <group name="Places">
+                <property name="places">
+                    <value>true</value>
+                    <available>true</available>
+                </property>
+                <property name="cities">
+                    <value>false</value>
+                    <available>false</available>
+                </property>
+                <property name="terrain">
+                    <value>false</value>
+                    <available>false</available>
+                </property>
+                <property name="otherplaces">
+                    <value>false</value>
+                    <available>false</available>
+                </property>
+            </group>
+            <group name="Texture Layers">
+                <property name="hillshading">
+                    <value>false</value>
+                    <available>true</available>
+                </property>
+            </group>
+        </settings>
+    </document>
+</dgml>
