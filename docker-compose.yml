@@ -18,7 +18,7 @@ services:
   mapproxy:
     image: kartoza/mapproxy
     volumes:
-      -  ./mapproxy/chart:/mapproxy
+      -  ./mapproxy:/mapproxy
     ports:
       - "8081:8080"
     restart: unless-stopped

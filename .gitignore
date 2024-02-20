@@ -1,3 +1,5 @@
 .idea
-/mapserv/charts/
-/mapproxy/chart/cache_data/
+/mapproxy/cache_data/
+/mapserv/charts
+!/mapserv/charts/PLACEHOLDER
+!/mapserv/charts/bref
